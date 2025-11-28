@@ -53,13 +53,13 @@ export default function Index() {
       title: 'Маленькая работа',
       size: 'до 5см',
       time: '1-2 часа',
-      price: 'от 3000₽'
+      price: 'от 2000₽'
     },
     {
       title: 'Средняя работа',
       size: '5-15см',
       time: '2-4 часа',
-      price: 'от 8000₽'
+      price: 'от 7000₽'
     },
     {
       title: 'Крупная работа',
@@ -430,7 +430,7 @@ export default function Index() {
             <div>
               <h3 className="font-oswald text-2xl text-primary mb-4">TATTOO BY DANOCHKA</h3>
               <p className="text-muted-foreground">
-                Профессиональная тату-студия в центре города. Создаём искусство на коже с 2017 года.
+                Профессиональный тату-мастер в центре города. Создаём искусство на коже с комфортом.
               </p>
             </div>
             <div>
