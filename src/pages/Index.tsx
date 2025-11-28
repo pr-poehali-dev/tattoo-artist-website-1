@@ -448,30 +448,32 @@ export default function Index() {
               <div className="space-y-2 text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <Icon name="Phone" size={18} />
-                  <span>+7 (999) 123-45-67</span>
+                  <a href="tel:+79999006962" className="hover:text-primary transition-colors">+7 (999) 900-69-62</a>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Icon name="Mail" size={18} />
-                  <span>tattoo@danochka.ru</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Icon name="MapPin" size={18} />
-                  <span>г. Москва, ул. Примерная, 123</span>
+                  <Icon name="Send" size={18} />
+                  <a href="https://t.me/finecsy" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">@finecsy</a>
                 </div>
               </div>
             </div>
             <div>
-              <h4 className="font-oswald text-xl mb-4">СОЦИАЛЬНЫЕ СЕТИ</h4>
+              <h4 className="font-oswald text-xl mb-4">СВЯЗЬ</h4>
               <div className="flex gap-4">
-                <Button variant="outline" size="icon" className="border-border hover:border-primary hover:text-primary">
-                  <Icon name="Instagram" size={20} />
-                </Button>
-                <Button variant="outline" size="icon" className="border-border hover:border-primary hover:text-primary">
-                  <Icon name="Send" size={20} />
-                </Button>
-                <Button variant="outline" size="icon" className="border-border hover:border-primary hover:text-primary">
-                  <Icon name="MessageCircle" size={20} />
-                </Button>
+                <a href="tel:+79999006962">
+                  <Button variant="outline" size="icon" className="border-border hover:border-primary hover:text-primary">
+                    <Icon name="Phone" size={20} />
+                  </Button>
+                </a>
+                <a href="https://t.me/finecsy" target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" size="icon" className="border-border hover:border-primary hover:text-primary">
+                    <Icon name="Send" size={20} />
+                  </Button>
+                </a>
+                <a href="https://wa.me/79999006962" target="_blank" rel="noopener noreferrer">
+                  <Button variant="outline" size="icon" className="border-border hover:border-primary hover:text-primary">
+                    <Icon name="MessageCircle" size={20} />
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
