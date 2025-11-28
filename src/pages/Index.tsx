@@ -18,37 +18,37 @@ export default function Index() {
   const portfolioWorks = [
     {
       id: 1,
-      image: 'https://cdn.poehali.dev/projects/b19456d1-97aa-45cf-a0a6-505b0d0b47ab/files/fd2e9fd2-8a6c-4a56-b63b-55b765b2c39e.jpg',
+      image: 'https://cdn.poehali.dev/projects/b19456d1-97aa-45cf-a0a6-505b0d0b47ab/files/e23099d0-0645-4dc9-a9f3-9aa7153c35c0.jpg',
       title: 'Реализм',
       style: 'Портрет'
     },
     {
       id: 2,
-      image: 'https://cdn.poehali.dev/projects/b19456d1-97aa-45cf-a0a6-505b0d0b47ab/files/fd2e9fd2-8a6c-4a56-b63b-55b765b2c39e.jpg',
+      image: 'https://cdn.poehali.dev/projects/b19456d1-97aa-45cf-a0a6-505b0d0b47ab/files/258cbf9f-21ce-4780-878e-e7074e5c95f7.jpg',
       title: 'Графика',
       style: 'Минимализм'
     },
     {
       id: 3,
-      image: 'https://cdn.poehali.dev/projects/b19456d1-97aa-45cf-a0a6-505b0d0b47ab/files/fd2e9fd2-8a6c-4a56-b63b-55b765b2c39e.jpg',
+      image: 'https://cdn.poehali.dev/projects/b19456d1-97aa-45cf-a0a6-505b0d0b47ab/files/8d78d575-66d2-49c6-b29a-097f56acbd33.jpg',
       title: 'Дотворк',
       style: 'Геометрия'
     },
     {
       id: 4,
-      image: 'https://cdn.poehali.dev/projects/b19456d1-97aa-45cf-a0a6-505b0d0b47ab/files/fd2e9fd2-8a6c-4a56-b63b-55b765b2c39e.jpg',
+      image: 'https://cdn.poehali.dev/projects/b19456d1-97aa-45cf-a0a6-505b0d0b47ab/files/1b5e2c55-9967-4ec2-8864-8e7bd8c00d85.jpg',
       title: 'Блэкворк',
       style: 'Орнамент'
     },
     {
       id: 5,
-      image: 'https://cdn.poehali.dev/projects/b19456d1-97aa-45cf-a0a6-505b0d0b47ab/files/fd2e9fd2-8a6c-4a56-b63b-55b765b2c39e.jpg',
+      image: 'https://cdn.poehali.dev/projects/b19456d1-97aa-45cf-a0a6-505b0d0b47ab/files/c02c2ea0-7d98-474e-ba3f-8948f3221116.jpg',
       title: 'Лайнворк',
       style: 'Абстракция'
     },
     {
       id: 6,
-      image: 'https://cdn.poehali.dev/projects/b19456d1-97aa-45cf-a0a6-505b0d0b47ab/files/fd2e9fd2-8a6c-4a56-b63b-55b765b2c39e.jpg',
+      image: 'https://cdn.poehali.dev/projects/b19456d1-97aa-45cf-a0a6-505b0d0b47ab/files/98087421-5e74-4138-8a4b-959275a3fa17.jpg',
       title: 'Олдскул',
       style: 'Традиция'
     }
