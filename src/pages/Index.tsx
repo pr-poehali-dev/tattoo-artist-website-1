@@ -18,39 +18,33 @@ export default function Index() {
   const portfolioWorks = [
     {
       id: 1,
-      image: 'https://cdn.poehali.dev/projects/b19456d1-97aa-45cf-a0a6-505b0d0b47ab/files/e23099d0-0645-4dc9-a9f3-9aa7153c35c0.jpg',
-      title: 'Реализм',
-      style: 'Портрет'
+      image: 'https://cdn.poehali.dev/files/b50e9993-a6a2-4841-b0a1-79af2b8f3e19.jpg',
+      title: 'Файнлайн',
+      style: 'Браслет с нотами'
     },
     {
       id: 2,
-      image: 'https://cdn.poehali.dev/projects/b19456d1-97aa-45cf-a0a6-505b0d0b47ab/files/258cbf9f-21ce-4780-878e-e7074e5c95f7.jpg',
-      title: 'Графика',
-      style: 'Минимализм'
+      image: 'https://cdn.poehali.dev/files/5072bc1b-b2d0-4abb-96ef-c66d24c80a2d.jpg',
+      title: 'Лайнворк',
+      style: 'Надписи и орнамент'
     },
     {
       id: 3,
-      image: 'https://cdn.poehali.dev/projects/b19456d1-97aa-45cf-a0a6-505b0d0b47ab/files/8d78d575-66d2-49c6-b29a-097f56acbd33.jpg',
-      title: 'Дотворк',
-      style: 'Геометрия'
+      image: 'https://cdn.poehali.dev/files/59b88222-ca8c-4eb9-84ea-164a37f6c28a.jpg',
+      title: 'Графика',
+      style: 'Человек и дерево'
     },
     {
       id: 4,
-      image: 'https://cdn.poehali.dev/projects/b19456d1-97aa-45cf-a0a6-505b0d0b47ab/files/1b5e2c55-9967-4ec2-8864-8e7bd8c00d85.jpg',
-      title: 'Блэкворк',
-      style: 'Орнамент'
+      image: 'https://cdn.poehali.dev/files/b099e117-f588-4530-8617-cd05be3376d4.jpg',
+      title: 'Леттеринг',
+      style: 'Надпись с кубиком'
     },
     {
       id: 5,
-      image: 'https://cdn.poehali.dev/projects/b19456d1-97aa-45cf-a0a6-505b0d0b47ab/files/c02c2ea0-7d98-474e-ba3f-8948f3221116.jpg',
-      title: 'Лайнворк',
-      style: 'Абстракция'
-    },
-    {
-      id: 6,
-      image: 'https://cdn.poehali.dev/projects/b19456d1-97aa-45cf-a0a6-505b0d0b47ab/files/98087421-5e74-4138-8a4b-959275a3fa17.jpg',
-      title: 'Олдскул',
-      style: 'Традиция'
+      image: 'https://cdn.poehali.dev/files/5561301d-8df6-4d2c-b526-242b875aa783.jpg',
+      title: 'Графика',
+      style: 'Персонаж'
     }
   ];
 
