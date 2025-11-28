@@ -251,10 +251,10 @@ export default function Index() {
               </h2>
               <div className="space-y-4 text-lg">
                 <p className="text-foreground/90">
-                  Привет! Меня зовут Дана, и я профессиональный тату-мастер с 7-летним опытом работы.
+                  Привет! Меня зовут Дана, и я профессиональный тату-мастер с небольшим стажем, но огромным потенциалом!
                 </p>
                 <p className="text-muted-foreground">
-                  Моя специализация — черно-белая графика, реализм и геометрия. Работаю исключительно на профессиональном оборудовании с соблюдением всех норм стерильности.
+                  Моя специализация — черно-белая графика, line work, файнлайн, трайбл. Работаю исключительно на профессиональном оборудовании с соблюдением всех норм стерильности.
                 </p>
                 <p className="text-muted-foreground">
                   Каждая работа для меня — это не просто рисунок на коже, это история, которую вы будете носить с собой всю жизнь. Я подхожу к каждому проекту индивидуально, учитывая все пожелания клиента.
@@ -262,11 +262,7 @@ export default function Index() {
                 <div className="flex gap-4 pt-6">
                   <div className="flex items-center gap-2">
                     <Icon name="Award" size={24} className="text-primary" />
-                    <span className="font-oswald text-xl">7+ ЛЕТ ОПЫТА</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Icon name="Users" size={24} className="text-primary" />
-                    <span className="font-oswald text-xl">500+ РАБОТ</span>
+                    <span className="font-oswald text-xl">СЕРТИФИЦИРОВАННЫЙ МАСТЕР</span>
                   </div>
                 </div>
               </div>
