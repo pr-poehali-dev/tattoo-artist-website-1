@@ -274,7 +274,7 @@ export default function Index() {
             <div className="order-1 lg:order-2 animate-fade-in" style={{ animationDelay: '0.2s' }}>
               <div className="relative">
                 <img 
-                  src="https://cdn.poehali.dev/projects/b19456d1-97aa-45cf-a0a6-505b0d0b47ab/files/ebcb1c52-9867-48da-863e-7670622018b5.jpg" 
+                  src="https://cdn.poehali.dev/files/98154ee7-d188-4525-b7e8-83514363365d.jpg" 
                   alt="Tattoo by Danochka"
                   className="w-full rounded-none shadow-2xl"
                 />
