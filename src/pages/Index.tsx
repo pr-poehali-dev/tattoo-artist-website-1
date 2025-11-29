@@ -116,11 +116,6 @@ export default function Index() {
 
   const advantages = [
     {
-      icon: 'Award',
-      title: 'Опыт более 5 лет',
-      description: 'Сотни довольных клиентов и тысячи часов практики'
-    },
-    {
       icon: 'Shield',
       title: 'Стерильность',
       description: 'Одноразовые инструменты и соблюдение всех норм безопасности'
@@ -134,6 +129,11 @@ export default function Index() {
       icon: 'Heart',
       title: 'Комфортная атмосфера',
       description: 'Уютная студия в центре города с кондиционером'
+    },
+    {
+      icon: 'Sparkles',
+      title: 'Качественные материалы',
+      description: 'Работаю только с профессиональными пигментами премиум-класса'
     }
   ];
 
