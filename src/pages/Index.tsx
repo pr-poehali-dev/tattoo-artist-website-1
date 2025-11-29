@@ -1,21 +1,10 @@
-import { useState, FormEvent } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Calendar } from '@/components/ui/calendar';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import Icon from '@/components/ui/icon';
-import { format } from 'date-fns';
-import { ru } from 'date-fns/locale';
 
 export default function Index() {
-  const [date, setDate] = useState<Date>();
-  const [selectedTime, setSelectedTime] = useState<string>('');
   const [activeSection, setActiveSection] = useState('hero');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const portfolioWorks = [
     {
@@ -98,47 +87,7 @@ export default function Index() {
     }
   ];
 
-  const timeSlots = ['10:00', '12:00', '14:00', '16:00', '18:00', '20:00'];
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-
-    const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get('name') as string,
-      phone: formData.get('phone') as string,
-      email: formData.get('email') as string,
-      date: date ? format(date, 'dd.MM.yyyy', { locale: ru }) : '',
-      time: selectedTime,
-      description: formData.get('description') as string,
-    };
-
-    try {
-      const response = await fetch('https://functions.poehali.dev/15177ca7-8725-434f-bd92-ba84eaaca497', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        e.currentTarget.reset();
-        setDate(undefined);
-        setSelectedTime('');
-        setTimeout(() => setSubmitStatus('idle'), 5000);
-      } else {
-        setSubmitStatus('error');
-      }
-    } catch (error) {
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -322,139 +271,57 @@ export default function Index() {
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="font-oswald text-5xl md:text-6xl mb-4 text-primary torn-edge inline-block px-8 py-2 bg-background/50">
-                ОНЛАЙН ЗАПИСЬ
+                СВЯЗАТЬСЯ СО МНОЙ
               </h2>
-              <p className="text-muted-foreground text-lg">Забронируй свой сеанс прямо сейчас</p>
+              <p className="text-muted-foreground text-lg">Выбери удобный способ для записи</p>
             </div>
 
-            <Card className="bg-card border-border animate-fade-in">
-              <CardContent className="p-8">
-                <form className="space-y-6" onSubmit={handleSubmit}>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <Label htmlFor="name" className="text-foreground mb-2 block">Имя *</Label>
-                      <Input 
-                        id="name"
-                        name="name"
-                        placeholder="Введите ваше имя"
-                        className="bg-background border-border focus:border-primary"
-                        required
-                      />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 animate-fade-in">
+              <a 
+                href="https://t.me/finecsy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <Card className="bg-card border-border hover:border-primary transition-all duration-300 h-full">
+                  <CardContent className="p-12 flex flex-col items-center justify-center text-center h-full space-y-6">
+                    <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Icon name="Send" size={48} className="text-primary" />
                     </div>
                     <div>
-                      <Label htmlFor="phone" className="text-foreground mb-2 block">Телефон *</Label>
-                      <Input 
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        placeholder="+7 (___) ___-__-__"
-                        className="bg-background border-border focus:border-primary"
-                        required
-                      />
+                      <h3 className="font-oswald text-3xl mb-2 text-primary">TELEGRAM</h3>
+                      <p className="text-muted-foreground">Написать в Telegram</p>
+                      <p className="text-sm text-muted-foreground mt-2">@finecsy</p>
                     </div>
-                  </div>
+                    <Button className="w-full bg-primary hover:bg-primary/90 text-lg py-6">
+                      Написать
+                    </Button>
+                  </CardContent>
+                </Card>
+              </a>
 
-                  <div>
-                    <Label htmlFor="email" className="text-foreground mb-2 block">Email</Label>
-                    <Input 
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="your@email.com"
-                      className="bg-background border-border focus:border-primary"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <a 
+                href="https://wa.me/79999006962"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <Card className="bg-card border-border hover:border-primary transition-all duration-300 h-full">
+                  <CardContent className="p-12 flex flex-col items-center justify-center text-center h-full space-y-6">
+                    <div className="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Icon name="MessageCircle" size={48} className="text-primary" />
+                    </div>
                     <div>
-                      <Label className="text-foreground mb-2 block">Дата сеанса *</Label>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <Button
-                            variant="outline"
-                            className="w-full justify-start text-left font-normal bg-background border-border hover:border-primary"
-                          >
-                            <Icon name="Calendar" size={16} className="mr-2" />
-                            {date ? format(date, 'PPP', { locale: ru }) : 'Выберите дату'}
-                          </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0 bg-popover border-border">
-                          <Calendar
-                            mode="single"
-                            selected={date}
-                            onSelect={setDate}
-                            locale={ru}
-                            disabled={(date) => date < new Date()}
-                            className="rounded-none"
-                          />
-                        </PopoverContent>
-                      </Popover>
+                      <h3 className="font-oswald text-3xl mb-2 text-primary">WHATSAPP</h3>
+                      <p className="text-muted-foreground">Написать в WhatsApp</p>
+                      <p className="text-sm text-muted-foreground mt-2">+7 (999) 900-69-62</p>
                     </div>
-
-                    <div>
-                      <Label className="text-foreground mb-2 block">Время *</Label>
-                      <div className="grid grid-cols-3 gap-2">
-                        {timeSlots.map((time) => (
-                          <Button
-                            key={time}
-                            type="button"
-                            variant={selectedTime === time ? 'default' : 'outline'}
-                            className={`${
-                              selectedTime === time 
-                                ? 'bg-primary text-primary-foreground' 
-                                : 'bg-background border-border hover:border-primary'
-                            }`}
-                            onClick={() => setSelectedTime(time)}
-                          >
-                            {time}
-                          </Button>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <Label htmlFor="description" className="text-foreground mb-2 block">Описание татуировки *</Label>
-                    <Textarea 
-                      id="description"
-                      name="description"
-                      placeholder="Опишите, что вы хотите: стиль, размер, место на теле, референсы..."
-                      className="bg-background border-border focus:border-primary min-h-32"
-                      required
-                    />
-                  </div>
-
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-primary hover:bg-primary/90 text-lg py-6"
-                    disabled={isSubmitting}
-                  >
-                    <Icon name="Send" size={20} className="mr-2" />
-                    {isSubmitting ? 'ОТПРАВКА...' : 'ОТПРАВИТЬ ЗАЯВКУ'}
-                  </Button>
-
-                  {submitStatus === 'success' && (
-                    <div className="p-4 bg-green-500/10 border border-green-500 rounded-lg text-center">
-                      <p className="text-green-500 font-medium">✓ Заявка успешно отправлена!</p>
-                      <p className="text-sm text-muted-foreground mt-1">Свяжусь с вами в течение 24 часов</p>
-                    </div>
-                  )}
-
-                  {submitStatus === 'error' && (
-                    <div className="p-4 bg-red-500/10 border border-red-500 rounded-lg text-center">
-                      <p className="text-red-500 font-medium">✗ Ошибка отправки</p>
-                      <p className="text-sm text-muted-foreground mt-1">Попробуйте позже или свяжитесь напрямую</p>
-                    </div>
-                  )}
-
-                  {submitStatus === 'idle' && (
-                    <p className="text-sm text-muted-foreground text-center">
-                      После отправки заявки я свяжусь с вами в течение 24 часов для подтверждения записи
-                    </p>
-                  )}
-                </form>
-              </CardContent>
-            </Card>
+                    <Button className="w-full bg-primary hover:bg-primary/90 text-lg py-6">
+                      Написать
+                    </Button>
+                  </CardContent>
+                </Card>
+              </a>
           </div>
         </div>
       </section>
