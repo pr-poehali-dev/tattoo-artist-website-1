@@ -87,6 +87,56 @@ export default function Index() {
     }
   ];
 
+  const faqs = [
+    {
+      question: 'Больно ли делать тату?',
+      answer: 'Ощущения индивидуальны и зависят от болевого порога и места нанесения. Обычно это терпимый дискомфорт, похожий на царапину. Самые чувствительные зоны - рёбра, внутренняя часть бицепса и область возле костей.'
+    },
+    {
+      question: 'Как подготовиться к сеансу?',
+      answer: 'Хорошо выспитесь и поешьте перед сеансом. Не употребляйте алкоголь за 24 часа. Носите удобную одежду, которая откроет нужный участок тела. Можно взять с собой воду и перекус.'
+    },
+    {
+      question: 'Сколько заживает тату?',
+      answer: 'Полное заживление занимает 2-4 недели. Первые 3-5 дней нужен особый уход: промывать тёплой водой с мылом 2-3 раза в день и наносить заживляющую мазь. Избегайте солнца, бассейнов и саун.'
+    },
+    {
+      question: 'Можно ли принести свой эскиз?',
+      answer: 'Конечно! Я с радостью воплощу вашу идею. Также могу доработать эскиз или создать уникальный дизайн специально для вас с учётом ваших пожеланий и анатомии.'
+    },
+    {
+      question: 'Какие гарантии качества?',
+      answer: 'Я использую только стерильные одноразовые инструменты и профессиональные пигменты высшего качества. Работаю в оборудованной студии с соблюдением всех санитарных норм. Даю рекомендации по уходу.'
+    },
+    {
+      question: 'Можно ли сделать тату за один сеанс?',
+      answer: 'Маленькие и средние работы обычно выполняются за один сеанс. Крупные проекты делятся на несколько сеансов, чтобы кожа успела восстановиться. Это гарантирует лучшее качество и комфорт.'
+    }
+  ];
+
+  const advantages = [
+    {
+      icon: 'Award',
+      title: 'Опыт более 5 лет',
+      description: 'Сотни довольных клиентов и тысячи часов практики'
+    },
+    {
+      icon: 'Shield',
+      title: 'Стерильность',
+      description: 'Одноразовые инструменты и соблюдение всех норм безопасности'
+    },
+    {
+      icon: 'Palette',
+      title: 'Индивидуальный подход',
+      description: 'Разработка уникального эскиза под ваши пожелания'
+    },
+    {
+      icon: 'Heart',
+      title: 'Комфортная атмосфера',
+      description: 'Уютная студия в центре города с кондиционером'
+    }
+  ];
+
 
 
   const scrollToSection = (sectionId: string) => {
@@ -357,6 +407,86 @@ export default function Index() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-muted/30 grunge-texture">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="font-oswald text-5xl md:text-6xl mb-4 text-primary torn-edge inline-block px-8 py-2 bg-background/50">
+              ПРЕИМУЩЕСТВА
+            </h2>
+            <p className="text-muted-foreground text-lg">Почему выбирают меня</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {advantages.map((advantage, index) => (
+              <Card 
+                key={index}
+                className="bg-card border-border hover:border-primary transition-all duration-300 animate-slide-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <CardContent className="p-8 text-center">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon name={advantage.icon} size={32} className="text-primary" />
+                  </div>
+                  <h3 className="font-oswald text-xl mb-3 text-primary">{advantage.title}</h3>
+                  <p className="text-muted-foreground text-sm">{advantage.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" className="py-24 grunge-texture">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="font-oswald text-5xl md:text-6xl mb-4 text-primary torn-edge inline-block px-8 py-2 bg-secondary/50">
+              ЧАСТЫЕ ВОПРОСЫ
+            </h2>
+            <p className="text-muted-foreground text-lg">Ответы на популярные вопросы</p>
+          </div>
+
+          <div className="max-w-4xl mx-auto space-y-4">
+            {faqs.map((faq, index) => (
+              <Card 
+                key={index}
+                className="bg-card border-border hover:border-primary transition-all duration-300 animate-slide-up"
+                style={{ animationDelay: `${index * 0.05}s` }}
+              >
+                <CardContent className="p-6">
+                  <div className="flex gap-4">
+                    <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Icon name="HelpCircle" size={20} className="text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-oswald text-xl mb-3 text-primary">{faq.question}</h3>
+                      <p className="text-foreground/80 leading-relaxed">{faq.answer}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-muted-foreground mb-6">Остались вопросы? Свяжитесь со мной удобным способом</p>
+            <div className="flex gap-4 justify-center">
+              <a href="https://t.me/finecsy" target="_blank" rel="noopener noreferrer">
+                <Button className="bg-primary hover:bg-primary/90">
+                  <Icon name="Send" size={20} className="mr-2" />
+                  Telegram
+                </Button>
+              </a>
+              <a href="https://wa.me/79999006962" target="_blank" rel="noopener noreferrer">
+                <Button className="bg-green-600 hover:bg-green-700">
+                  <Icon name="MessageCircle" size={20} className="mr-2" />
+                  WhatsApp
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
       </section>
