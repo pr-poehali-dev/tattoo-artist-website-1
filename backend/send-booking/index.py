@@ -11,6 +11,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     Returns: HTTP response dict
     '''
     method: str = event.get('httpMethod', 'GET')
+    print(f"[DEBUG] Method: {method}")
     
     if method == 'OPTIONS':
         return {
@@ -39,7 +40,11 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     bot_token = os.environ.get('TELEGRAM_BOT_TOKEN')
     chat_id = os.environ.get('TELEGRAM_CHAT_ID')
     
+    print(f"[DEBUG] Bot token exists: {bool(bot_token)}")
+    print(f"[DEBUG] Chat ID exists: {bool(chat_id)}")
+    
     if not bot_token or not chat_id:
+        print(f"[ERROR] Missing credentials: bot_token={bool(bot_token)}, chat_id={bool(chat_id)}")
         return {
             'statusCode': 500,
             'headers': {
@@ -51,6 +56,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         }
     
     body_data = json.loads(event.get('body', '{}'))
+    print(f"[DEBUG] Received body: {body_data}")
     
     name = body_data.get('name', '')
     phone = body_data.get('phone', '')
@@ -79,9 +85,12 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     req = urllib.request.Request(telegram_url, data=data, method='POST')
     
     try:
+        print(f"[DEBUG] Sending to Telegram: {telegram_url}")
         with urllib.request.urlopen(req) as response:
-            response.read()
+            result = response.read()
+            print(f"[DEBUG] Telegram response: {result}")
         
+        print(f"[SUCCESS] Message sent successfully")
         return {
             'statusCode': 200,
             'headers': {
@@ -92,6 +101,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             'isBase64Encoded': False
         }
     except Exception as e:
+        print(f"[ERROR] Failed to send: {str(e)}")
         return {
             'statusCode': 500,
             'headers': {
