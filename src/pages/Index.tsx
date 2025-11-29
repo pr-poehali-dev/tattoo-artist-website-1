@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -14,6 +14,8 @@ export default function Index() {
   const [date, setDate] = useState<Date>();
   const [selectedTime, setSelectedTime] = useState<string>('');
   const [activeSection, setActiveSection] = useState('hero');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const portfolioWorks = [
     {
@@ -97,6 +99,46 @@ export default function Index() {
   ];
 
   const timeSlots = ['10:00', '12:00', '14:00', '16:00', '18:00', '20:00'];
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get('name') as string,
+      phone: formData.get('phone') as string,
+      email: formData.get('email') as string,
+      date: date ? format(date, 'dd.MM.yyyy', { locale: ru }) : '',
+      time: selectedTime,
+      description: formData.get('description') as string,
+    };
+
+    try {
+      const response = await fetch('https://functions.poehali.dev/15177ca7-8725-434f-bd92-ba84eaaca497', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        e.currentTarget.reset();
+        setDate(undefined);
+        setSelectedTime('');
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -287,23 +329,27 @@ export default function Index() {
 
             <Card className="bg-card border-border animate-fade-in">
               <CardContent className="p-8">
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <Label htmlFor="name" className="text-foreground mb-2 block">Имя *</Label>
                       <Input 
-                        id="name" 
+                        id="name"
+                        name="name"
                         placeholder="Введите ваше имя"
                         className="bg-background border-border focus:border-primary"
+                        required
                       />
                     </div>
                     <div>
                       <Label htmlFor="phone" className="text-foreground mb-2 block">Телефон *</Label>
                       <Input 
-                        id="phone" 
+                        id="phone"
+                        name="phone"
                         type="tel"
                         placeholder="+7 (___) ___-__-__"
                         className="bg-background border-border focus:border-primary"
+                        required
                       />
                     </div>
                   </div>
@@ -311,7 +357,8 @@ export default function Index() {
                   <div>
                     <Label htmlFor="email" className="text-foreground mb-2 block">Email</Label>
                     <Input 
-                      id="email" 
+                      id="email"
+                      name="email"
                       type="email"
                       placeholder="your@email.com"
                       className="bg-background border-border focus:border-primary"
@@ -370,19 +417,41 @@ export default function Index() {
                     <Label htmlFor="description" className="text-foreground mb-2 block">Описание татуировки *</Label>
                     <Textarea 
                       id="description"
+                      name="description"
                       placeholder="Опишите, что вы хотите: стиль, размер, место на теле, референсы..."
                       className="bg-background border-border focus:border-primary min-h-32"
+                      required
                     />
                   </div>
 
-                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-lg py-6">
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-primary hover:bg-primary/90 text-lg py-6"
+                    disabled={isSubmitting}
+                  >
                     <Icon name="Send" size={20} className="mr-2" />
-                    ОТПРАВИТЬ ЗАЯВКУ
+                    {isSubmitting ? 'ОТПРАВКА...' : 'ОТПРАВИТЬ ЗАЯВКУ'}
                   </Button>
 
-                  <p className="text-sm text-muted-foreground text-center">
-                    После отправки заявки я свяжусь с вами в течение 24 часов для подтверждения записи
-                  </p>
+                  {submitStatus === 'success' && (
+                    <div className="p-4 bg-green-500/10 border border-green-500 rounded-lg text-center">
+                      <p className="text-green-500 font-medium">✓ Заявка успешно отправлена!</p>
+                      <p className="text-sm text-muted-foreground mt-1">Свяжусь с вами в течение 24 часов</p>
+                    </div>
+                  )}
+
+                  {submitStatus === 'error' && (
+                    <div className="p-4 bg-red-500/10 border border-red-500 rounded-lg text-center">
+                      <p className="text-red-500 font-medium">✗ Ошибка отправки</p>
+                      <p className="text-sm text-muted-foreground mt-1">Попробуйте позже или свяжитесь напрямую</p>
+                    </div>
+                  )}
+
+                  {submitStatus === 'idle' && (
+                    <p className="text-sm text-muted-foreground text-center">
+                      После отправки заявки я свяжусь с вами в течение 24 часов для подтверждения записи
+                    </p>
+                  )}
                 </form>
               </CardContent>
             </Card>
