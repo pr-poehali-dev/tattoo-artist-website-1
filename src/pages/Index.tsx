@@ -322,6 +322,7 @@ export default function Index() {
                   </CardContent>
                 </Card>
               </a>
+            </div>
           </div>
         </div>
       </section>
